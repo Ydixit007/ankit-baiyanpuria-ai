@@ -3,7 +3,6 @@ import OpenAI from "openai";
 
 export async function POST(req: NextRequest) {
   const { message, threadId } = await req.json();
-  console.log({ message, threadId });
 
   if (!threadId || !message) {
     return NextResponse.json(
@@ -18,7 +17,7 @@ export async function POST(req: NextRequest) {
       role: "user",
       content: message,
     });
-    return NextResponse.json({ message: threadMessage }, { status: 201 });
+    return NextResponse.json({ message: threadMessage, success: true}, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: error, success: false }, { status: 500 });
   }
