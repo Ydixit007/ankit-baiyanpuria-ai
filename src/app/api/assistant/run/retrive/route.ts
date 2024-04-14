@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
 
   if (!threadId || !runId) {
     return NextResponse.json(
-      { error: "thread Id and message are required!", success: false },
+      { error: "thread Id and run Id are required!", success: false },
       { status: 400 }
     );
   }
